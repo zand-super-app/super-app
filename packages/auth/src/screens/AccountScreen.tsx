@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import {Button} from 'react-native-paper';
 import {useAuth} from '../contexts/AuthContext';
 
@@ -8,7 +8,12 @@ const AccountScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Button mode="contained" onPress={signOut}>
+      <Image 
+      style={{width: 120, height: 120, borderRadius:20, alignSelf: 'center'}}
+      source={{uri: 'https://randomuser.me/api/portraits/men/76.jpg'}} />
+      <Text style={{marginVertical: 10}}>Steven Jackford - GBE Enterprises</Text>
+      <Text>Owner</Text>
+      <Button mode="contained" onPress={signOut} style={{marginVertical: 20}}>
         Logout
       </Button>
     </View>

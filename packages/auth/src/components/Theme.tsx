@@ -5,7 +5,7 @@ const theme = {
   colors: {
     ...DefaultTheme.colors,
     primary: '#ff7f41',
-    background: '#f5f1f2',
+    background: '#ededed',
     white: '#fff',
   },
   spacing: {
@@ -30,7 +30,7 @@ const theme = {
       flex: 1,
       padding: 16,
       justifyContent: 'center',
-      backgroundColor: '#f5f1f2',
+      backgroundColor: '#ededed',
     },
     formContainer: {
       marginVertical: 16,

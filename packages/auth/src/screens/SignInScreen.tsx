@@ -19,7 +19,7 @@ const SignInScreen = () => {
   const {signIn, signUp} = useAuth();
 
   return (
-    <View style={styles.container}>
+    <View style={theme.styles.container}>
       <View style={styles.headingContainer}>
         <Text style={styles.pageTitle}>
           Welcome to Zand Digital Corporate Banking
@@ -34,6 +34,7 @@ const SignInScreen = () => {
       <View style={theme.styles.formContainer}>
         <TextInput
           mode="flat"
+          autoCapitalize="none"
           autoComplete="off"
           label="Username"
           value={email}
@@ -46,6 +47,7 @@ const SignInScreen = () => {
           mode="flat"
           autoComplete="off"
           label="Password"
+          secureTextEntry={true}
           value={password}
           onChangeText={handleChangePassword}
           style={theme.styles.input}

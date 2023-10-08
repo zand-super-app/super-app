@@ -5,7 +5,8 @@ const theme = {
   colors: {
     ...DefaultTheme.colors,
     primary: '#ff7f41',
-    background: '#f5f1f2',
+    background: '#ededed',
+    white: '#fff',
   },
   spacing: {
     small: 8,
@@ -25,11 +26,18 @@ const theme = {
     },
   },
   styles: {
+    safeAreContainer: {
+      flex: 1,
+      backgroundColor: '#ededed',
+    },
     container: {
       flex: 1,
       padding: 16,
       justifyContent: 'center',
-      backgroundColor: '#f5f1f2',
+      backgroundColor: '#ededed',
+    },
+    formContainer: {
+      marginVertical: 16,
     },
     headingContainer: {
       marginBottom: 16,
@@ -54,12 +62,15 @@ const theme = {
       marginHorizontal: 8,
     },
     input: {
-      position: 'absolute',
-      width: 40,
-      height: 40,
-      fontSize: 20,
-      textAlign: 'center',
-      color: 'transparent',
+      marginBottom: 16,
+      backgroundColor: '#fff',
+      borderColor: '#f5f1f2',
+      borderWidth: 2,
+      borderTopEndRadius: 14,
+      borderTopStartRadius: 14,
+      borderBottomStartRadius: 14,
+      borderBottomEndRadius: 14,
+      borderBottomWidth: 0,
     },
   },
 };
