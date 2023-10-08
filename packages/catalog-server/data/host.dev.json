@@ -3,8 +3,8 @@
     "0.0.1": {
       "booking": "http://localhost:9000/[name][ext]",
       "shopping": "http://localhost:9001/[name][ext]",
-      "news1": "https://s3.ap-south-1.amazonaws.com/zand.ae-super-app-container/news-ios@0.0.1/[name][ext]",
-      "news": "https://s3.ap-south-1.amazonaws.com/zand.ae-super-app-container/onboarding-ios@0.0.1/[name][ext]",
+      "news1": "https://s3.ap-south-1.amazonaws.com/zand.ae-super-app-container/onboarding-ios@0.0.1/[name][ext]",
+      "news": "http://localhost:4041/[name][ext]",
       "dashboard": "http://localhost:9002/[name][ext]",
       "auth": "http://localhost:9003/[name][ext]"
     }

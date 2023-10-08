@@ -6,6 +6,7 @@ enum ActionTypes {
   RESTORE_TOKEN = 'RESTORE_TOKEN',
   SIGN_IN = 'SIGN_IN',
   SIGN_OUT = 'SIGN_OUT',
+  SIGN_UP = 'SIGN_UP',
 }
 
 type Action = {
@@ -16,6 +17,7 @@ type Action = {
 type State = {
   isLoading: boolean;
   isSignout: boolean;
+  isSignup: boolean;
 };
 
 const reducer = (prevState: State, action: Action): State => {
@@ -25,6 +27,12 @@ const reducer = (prevState: State, action: Action): State => {
         ...prevState,
         isSignout: action.payload,
         isLoading: false,
+      };
+    case ActionTypes.SIGN_UP:
+      return {
+        ...prevState,
+        isSignup: true,
+        isSignout: false,
       };
     case ActionTypes.SIGN_IN:
       return {
@@ -49,6 +57,7 @@ const AuthProvider = ({
   const [state, dispatch] = React.useReducer(reducer, {
     isLoading: false,
     isSignout: false,
+    isSignup: false,
   });
 
   const authContext = React.useMemo(
@@ -73,12 +82,12 @@ const AuthProvider = ({
       },
       signUp: async () => {
         try {
-          await AuthService.shared.setCredentials('dummy-auth-token');
+          await AuthService.shared.removeCredentials();
         } catch (e) {
           // Handle error
         }
 
-        dispatch({type: ActionTypes.SIGN_IN});
+        dispatch({type: ActionTypes.SIGN_UP});
       },
     }),
     [],
