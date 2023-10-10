@@ -10,11 +10,20 @@ const Services = () => {
           Favourties
         </Text>
         <View style={styles.favContainer}>
-          <ServicesCard iconName="wallet-outline" text="Accounts Services" />
-          <ServicesCard iconName="cash-outline" text="Fund Transfers" />
+          <ServicesCard
+            iconName="wallet-outline"
+            text="Accounts Services"
+            serviceType="Static"
+          />
+          <ServicesCard
+            iconName="cash-outline"
+            text="Fund Transfers"
+            serviceType="Static"
+          />
           <ServicesCard
             iconName="mail-unread-outline"
             text="Approval Requests"
+            serviceType="Static"
           />
         </View>
       </View>
@@ -27,9 +36,18 @@ const Services = () => {
           <ServicesCard
             iconName="people-outline"
             text="Beneficary Management"
+            serviceType="Static"
           />
-          <ServicesCard iconName="cash-outline" text="Cash Management" />
-          <ServicesCard iconName="earth-outline" text="My Remittances" />
+          <ServicesCard
+            iconName="cash-outline"
+            text="Cash Management"
+            serviceType="Static"
+          />
+          <ServicesCard
+            iconName="earth-outline"
+            text="My Remittances"
+            serviceType="Static"
+          />
         </View>
       </View>
 
@@ -38,19 +56,29 @@ const Services = () => {
           Crypto & Trading
         </Text>
         <View style={styles.favContainer}>
-          <ServicesCard iconName="apps-outline" text="Binance" />
-          <ServicesCard iconName="skull-outline" text="Phantom" />
+          <ServicesCard
+            iconName="apps-outline"
+            text="Binance"
+            serviceType="PWA"
+            serviceUrl="https://www.binance.com/en/nft/home"
+          />
+          <ServicesCard
+            iconName="skull-outline"
+            text="Crypto Wallet"
+            serviceType="PWA"
+            serviceUrl="http://localhost:8100/"
+          />
         </View>
       </View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({  
+const styles = StyleSheet.create({
   favContainer: {
     flexDirection: 'row',
   },
-  sectionContainer: {    
+  sectionContainer: {
     flexDirection: 'column',
   },
 });
