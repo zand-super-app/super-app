@@ -4,19 +4,18 @@ import ServicesCard from './ServicesCard';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Services = () => {
-
   const [userData, setUserData] = useState<any | null>(null);
 
   useEffect(() => {
     const getUserData = async () => {
       const userData = await AsyncStorage.getItem('userData');
-      if(userData) {
+      if (userData) {
         setUserData(JSON.parse(userData));
-      }      
+      }
     };
 
     getUserData();
-  },[]);
+  }, []);
 
   return (
     <View>
@@ -25,21 +24,19 @@ const Services = () => {
           Favourties
         </Text>
         <View style={styles.favContainer}>
-          <ServicesCard
-            iconName="wallet-outline"
-            text="Accounts Services"
-            serviceType="Static"
-          />
-          <ServicesCard
-            iconName="cash-outline"
-            text="Fund Transfers"
-            serviceType="Static"
-          />
-          <ServicesCard
-            iconName="mail-unread-outline"
-            text="Approval Requests"
-            serviceType="Static"
-          />
+          {userData?.applications?.map((application: any) => {
+            if (application?.location?.includes('favs')) {
+              return (
+                <ServicesCard
+                  key={application.code}
+                  iconName={application.iconName}
+                  text={application.title}
+                  serviceType={application.serviceType}
+                  serviceUrl={application.serviceUrl}
+                />
+              );
+            }
+          })}
         </View>
       </View>
 
@@ -48,21 +45,19 @@ const Services = () => {
           Essentials
         </Text>
         <View style={styles.favContainer}>
-          <ServicesCard
-            iconName="people-outline"
-            text="Beneficary Management"
-            serviceType="Static"
-          />
-          <ServicesCard
-            iconName="cash-outline"
-            text="Cash Management"
-            serviceType="Static"
-          />
-          <ServicesCard
-            iconName="earth-outline"
-            text="My Remittances"
-            serviceType="Static"
-          />
+          {userData?.applications?.map((application: any) => {
+            if (application?.location?.includes('essentials')) {
+              return (
+                <ServicesCard
+                  key={application.code}
+                  iconName={application.iconName}
+                  text={application.title}
+                  serviceType={application.serviceType}
+                  serviceUrl={application.serviceUrl}
+                />
+              );
+            }
+          })}
         </View>
       </View>
 
@@ -71,18 +66,19 @@ const Services = () => {
           Crypto & Trading
         </Text>
         <View style={styles.favContainer}>
-          <ServicesCard
-            iconName="apps-outline"
-            text="Binance"
-            serviceType="PWA"
-            serviceUrl="https://www.binance.com/en/nft/home"
-          />
-          <ServicesCard
-            iconName="skull-outline"
-            text="Crypto Wallet"
-            serviceType="PWA"
-            serviceUrl="https://zand-pwa.web.app/"
-          />
+          {userData?.applications?.map((application: any) => {
+            if (application?.location?.includes('crypto')) {
+              return (
+                <ServicesCard
+                  key={application.code}
+                  iconName={application.iconName}
+                  text={application.title}
+                  serviceType={application.serviceType}
+                  serviceUrl={application.serviceUrl}
+                />
+              );
+            }
+          })}
         </View>
       </View>
     </View>
