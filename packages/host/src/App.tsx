@@ -27,6 +27,7 @@ const App = () => {
               isSignout: boolean;
               isLoading: boolean;
               isSignup: boolean;
+              userData: any;
             }) => {
               if (authData.isLoading) {
                 return <SplashScreen />;

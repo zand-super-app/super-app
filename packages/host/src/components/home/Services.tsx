@@ -1,8 +1,23 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import ServicesCard from './ServicesCard';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Services = () => {
+
+  const [userData, setUserData] = useState<any | null>(null);
+
+  useEffect(() => {
+    const getUserData = async () => {
+      const userData = await AsyncStorage.getItem('userData');
+      if(userData) {
+        setUserData(JSON.parse(userData));
+      }      
+    };
+
+    getUserData();
+  },[]);
+
   return (
     <View>
       <View style={styles.sectionContainer}>
@@ -66,7 +81,7 @@ const Services = () => {
             iconName="skull-outline"
             text="Crypto Wallet"
             serviceType="PWA"
-            serviceUrl="http://localhost:8100/"
+            serviceUrl="https://zand-pwa.web.app/"
           />
         </View>
       </View>

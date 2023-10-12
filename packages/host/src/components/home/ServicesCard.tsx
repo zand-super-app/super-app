@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, ActivityIndicator} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -8,6 +8,7 @@ import {WebView} from 'react-native-webview';
 import {Modal, Portal, Button} from 'react-native-paper';
 import {Dimensions} from 'react-native';
 import PWAHeader from '../PWAHeader';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type Props = {
   iconName: string;
@@ -17,6 +18,20 @@ type Props = {
 };
 
 const ServicesCard = ({iconName, text, serviceType, serviceUrl}: Props) => {
+
+  const [userData, setUserData] = useState<any | null>(null);
+
+  useEffect(() => {
+    const getUserData = async () => {
+      const userData = await AsyncStorage.getItem('userData');
+      if(userData) {
+        setUserData(JSON.parse(userData));
+      }      
+    };
+
+    getUserData();
+  },[]);
+
   const [showWebView, setShowWebView] = React.useState(false);
   const webViewRef = React.useRef<WebView | null>(null);
 
@@ -91,11 +106,7 @@ const ServicesCard = ({iconName, text, serviceType, serviceUrl}: Props) => {
               startInLoadingState={true}
               renderLoading={() => <ActivityIndicator />}
               onLoadEnd={() => {
-                if (webViewRef.current) {
-                  const userData = {
-                    'userName': 'sharaf',
-                    'fullName': 'Sharaf'
-                  }
+                if (webViewRef.current) {                 
                   webViewRef.current.postMessage(JSON.stringify(userData));
                 }
               }}

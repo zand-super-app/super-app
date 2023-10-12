@@ -18,6 +18,7 @@ type State = {
   isLoading: boolean;
   isSignout: boolean;
   isSignup: boolean;
+  userData: any;
 };
 
 const reducer = (prevState: State, action: Action): State => {
@@ -38,6 +39,7 @@ const reducer = (prevState: State, action: Action): State => {
       return {
         ...prevState,
         isSignout: false,
+        userData: action.payload,
       };
     case ActionTypes.SIGN_OUT:
       return {
@@ -58,18 +60,23 @@ const AuthProvider = ({
     isLoading: false,
     isSignout: false,
     isSignup: false,
+    userData: null,
   });
 
   const authContext = React.useMemo(
     () => ({
-      signIn: async () => {
+      signIn: async (userName: string, password: string) => {
         try {
           await AuthService.shared.setCredentials('dummy-auth-token');
+          const response = await fetch(`https://1f76-83-110-11-204.ngrok-free.app/personalization-service/profiles?username=${userName}`);          
+          console.log('API response:', response);
+          const data = await response.json();
+          await AuthService.shared.setUserData(data);
+          dispatch({type: ActionTypes.SIGN_IN, payload: {userData: data}});
         } catch (e) {
           // Handle error
         }
-
-        dispatch({type: ActionTypes.SIGN_IN});
+        
       },
       signOut: async () => {
         try {

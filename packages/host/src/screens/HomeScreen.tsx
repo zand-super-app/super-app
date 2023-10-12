@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
+  Alert,
   Dimensions,
   FlatList,
   ListRenderItem,
@@ -31,6 +32,7 @@ import InfoCard from '../components/home/InfoCard';
 import CarouselIndicator from '../components/CarouselIndicator';
 import ServicesCard from '../components/home/ServicesCard';
 import Services from '../components/home/Services';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type Props = CompositeScreenProps<
   NativeStackScreenProps<HomeStackParamList>,
@@ -39,12 +41,25 @@ type Props = CompositeScreenProps<
 
 const HomeScreen = ({navigation}: Props) => {
   const width = Dimensions.get('window').width;
+  const [userData, setUserData] = useState<any | null>(null);
 
+  useEffect(() => {
+    const getUserData = async () => {
+      const userData = await AsyncStorage.getItem('userData');
+      if(userData) {
+        setUserData(JSON.parse(userData));
+      }      
+    };
+
+    getUserData();
+  },[]);
+  
   return (
     <SafeAreaView style={theme.styles.safeAreContainer}>
       <ScrollView>
         <Header title="Home" showMenu={true} />
         <View style={styles.infoContainer}>
+          <Text>Welcome, {userData?.fullName}</Text>
           <Carousel
             pagingEnabled={true}
             loop

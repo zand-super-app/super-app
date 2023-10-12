@@ -1,5 +1,5 @@
 const getContainersURL = ({
-  hostname = 'http://localhost:3000',
+  hostname = 'https://1f76-83-110-11-204.ngrok-free.app/catalog-service',
   appName,
   version,
   platform,

@@ -57,7 +57,9 @@ const SignInScreen = () => {
       </View>
 
       <View style={styles.buttonContainer}>
-        <Button mode="contained" style={styles.button} onPress={signIn}>
+        <Button mode="contained" style={styles.button} onPress={()=>{
+          signIn(email, password);
+        }}>
           Log in
         </Button>
       </View>

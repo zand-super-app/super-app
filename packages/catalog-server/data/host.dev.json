@@ -3,10 +3,10 @@
     "0.0.1": {
       "booking": "http://localhost:9000/[name][ext]",
       "shopping": "http://localhost:9001/[name][ext]",
-      "news": "https://s3.ap-south-1.amazonaws.com/zand.ae-super-app-container/onboarding-ios@0.0.1/[name][ext]",
+      "news": "https://demo-super-app-container.s3.me-central-1.amazonaws.com/credit-card-onboarding-ios@0.0.1/[name][ext]",
       "news1": "http://localhost:4041/[name][ext]",
       "dashboard": "http://localhost:9002/[name][ext]",
-      "auth": "http://localhost:9003/[name][ext]"
+      "auth": "https://1f76-83-110-11-204.ngrok-free.app/auth-bundle/[name][ext]"
     }
   },
   "android": {
@@ -15,7 +15,7 @@
       "shopping": "http://localhost:9001/[name][ext]",
       "news": "https://github.com/callstack/news-mini-app-showcase/releases/download/news-android@0.0.1/[name][ext]",
       "dashboard": "http://localhost:9002/[name][ext]",
-      "auth": "http://localhost:9003/[name][ext]"
+      "auth": "https://1f76-83-110-11-204.ngrok-free.app/auth-bundle/[name][ext]"
     }
   }
 }
