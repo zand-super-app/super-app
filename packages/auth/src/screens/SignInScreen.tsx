@@ -3,6 +3,7 @@ import {Image, StyleSheet, View} from 'react-native';
 import {Button, MD3Colors, Text, TextInput} from 'react-native-paper';
 import {useAuth} from '../contexts/AuthContext';
 import theme from '../components/Theme';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const SignInScreen = () => {
   const [email, setEmail] = useState('');
@@ -57,20 +58,33 @@ const SignInScreen = () => {
       </View>
 
       <View style={styles.buttonContainer}>
-        <Button mode="contained" style={styles.button} onPress={()=>{
-          signIn(email, password);
-        }}>
+        <Button
+          mode="contained"
+          style={styles.button}
+          onPress={() => {
+            signIn(email, password);
+          }}>
           Log in
         </Button>
       </View>
       <View style={styles.infoContainer}>
-        <Text style={{textAlign: "center", marginVertical: 8}}>New to Zand Bank? </Text>
-        <Button
+        <Text style={{textAlign: 'center', marginVertical: 8}}>
+          Login using Biometics
+        </Text>
+
+        <Icon
+          size={56}
+          style={{alignSelf: 'center', marginVertical: 10}}
+          color={theme.colors.primary}
+          name="finger-print-outline"
+        />
+
+        {/* <Button
           mode="outlined"
           style={[styles.button, styles.buttonOutline]}
           onPress={signUp}>
           Create a corporate account
-        </Button>
+        </Button> */}
       </View>
     </View>
   );

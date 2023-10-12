@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {SafeAreaView, StyleSheet, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {MD3Colors} from 'react-native-paper';
+import theme from '../components/Theme';
 
 type Props = {
   label: string;
@@ -11,7 +11,7 @@ type Props = {
 const Placeholder: FC<Props> = ({label, icon}) => {
   return (
     <SafeAreaView style={styles.container}>
-      <Icon size={96} color={MD3Colors.primary20} name={icon} />
+      <Icon size={36} color={theme.colors.primary} name={icon} />
       <Text style={styles.text}>{label}</Text>
     </SafeAreaView>
   );
@@ -24,8 +24,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    fontSize: 24,
-    color: MD3Colors.primary20,
+    fontSize: 18,
+    marginTop: 20,
+    color: theme.colors.primary,
   },
 });
 

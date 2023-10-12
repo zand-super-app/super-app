@@ -9,7 +9,7 @@ const NewsScreen = () => {
   return (
     <ErrorBoundary name="NewsScreen">
       <React.Suspense
-        fallback={<Placeholder label="News and Articles" icon="newspaper" />}>
+        fallback={<Placeholder label="Tailoring Personalized Credit Cards for you.." icon="card-outline" />}>
         <News />
       </React.Suspense>
     </ErrorBoundary>
