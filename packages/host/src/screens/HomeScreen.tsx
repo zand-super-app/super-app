@@ -59,7 +59,7 @@ const HomeScreen = ({navigation}: Props) => {
       <ScrollView>
         <Header title="Home" showMenu={true} />
         <View style={styles.infoContainer}>
-          <Text>Welcome, {userData?.fullName}</Text>
+          <Text style={{marginBottom: 10, fontWeight: '700'}}>Welcome, {userData?.fullName}</Text>
           <Carousel
             pagingEnabled={true}
             loop
